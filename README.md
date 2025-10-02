@@ -1,2 +1,2 @@
-# apartmate
+# Apartmate Web App
 
