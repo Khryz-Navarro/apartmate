@@ -5,6 +5,8 @@
 .php_cs.cache
 .phpstorm.meta.php
 _ide_helper*.php
+.env.dusk
+.env.dusk.local
 
 # BACK END
 /database/seeds/data/~$fragments*.xlsx
