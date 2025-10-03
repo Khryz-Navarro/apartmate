@@ -8,31 +8,35 @@ return [
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
+    | as Stripe, Mailgun, SparkPost and others. This file provides a sane
+    | default location for this type of information, allowing packages
+    | to have a conventional place to find your various credentials.
     |
     */
 
-    'postmark' => [
-        'token' => env('POSTMARK_TOKEN'),
-    ],
-
-    'resend' => [
-        'key' => env('RESEND_KEY'),
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
     ],
 
     'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
-        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+        'key' => env('SES_KEY'),
+        'secret' => env('SES_SECRET'),
+        'region' => 'us-east-1',
     ],
 
-    'slack' => [
-        'notifications' => [
-            'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
-            'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
-        ],
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
+    ],
+
+    'stripe' => [
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'google_maps' => [
+        'api_key' => env('GOOGLE_MAPS_API_KEY'),
     ],
 
 ];
