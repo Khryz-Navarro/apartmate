@@ -48,7 +48,6 @@ class HomeController extends Controller
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:6|confirmed',
-            'new_password_confirmation' => 'required|min:6',
         ]);
 
         $user = Auth::user();
