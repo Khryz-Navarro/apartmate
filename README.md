@@ -2,6 +2,20 @@
 
 A Laravel-based web application for apartment management and roommate coordination.
 
+## Screenshots
+
+### Landing Page
+![Landing Page](public/images/Screenshot.png)
+
+### Login Page
+![Login Page](public/images/Screenshot%20(2).png)
+
+### Registration Page
+![Registration Page](public/images/Screenshot%20(3).png)
+
+### Dashboard
+![Dashboard](public/images/Screenshot%20(4).png)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
