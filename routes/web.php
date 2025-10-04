@@ -4,10 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
