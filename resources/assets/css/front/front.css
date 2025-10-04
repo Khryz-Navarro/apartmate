@@ -1,7 +1,0 @@
-@charset 'UTF-8';
-
-@import './bootstrap.css';
-@import './components/*';
-@import './utilities/*';
-
-@tailwind utilities;
