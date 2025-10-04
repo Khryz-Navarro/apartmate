@@ -16,7 +16,7 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <h1 class="login-title">Welcome Back</h1>
+            <h1 class="login-title">ApartMate</h1>
             <p class="login-subtitle">Sign in to your account</p>
         </div>
 
