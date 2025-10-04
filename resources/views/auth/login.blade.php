@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome/all.min.css') }}">
     
     <!-- Login JavaScript -->
     <script src="{{ asset('js/login.js') }}" defer></script>

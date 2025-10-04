@@ -12,12 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
     
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome/all.min.css') }}">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Local) -->
+    <link rel="stylesheet" href="{{ asset('fonts/google/inter.css') }}">
 </head>
 <body>
     <!-- Header -->
@@ -67,7 +65,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Beautiful apartment interior" />
+                <img src="{{ asset('images/apartment-hero.jpg') }}" alt="Beautiful apartment interior" />
             </div>
         </div>
     </section>
