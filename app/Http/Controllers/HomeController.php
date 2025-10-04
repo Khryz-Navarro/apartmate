@@ -22,9 +22,14 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        $registeredUsersCount = User::count();
+        $user = Auth::user();
         
-        return view('dashboard', compact('registeredUsersCount'));
+        // Get user-specific statistics
+        $userPropertiesCount = 0; // Placeholder for future property functionality
+        $userBookingsCount = 0;   // Placeholder for future booking functionality
+        $userReviewsCount = 0;    // Placeholder for future review functionality
+        
+        return view('dashboard', compact('userPropertiesCount', 'userBookingsCount', 'userReviewsCount'));
     }
 
     /**
@@ -43,6 +48,7 @@ class HomeController extends Controller
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:6|confirmed',
+            'new_password_confirmation' => 'required|min:6',
         ]);
 
         $user = Auth::user();
@@ -50,6 +56,11 @@ class HomeController extends Controller
         // Check if current password is correct
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        // Check if new password is different from current password
+        if (Hash::check($request->new_password, $user->password)) {
+            return back()->withErrors(['new_password' => 'The new password must be different from your current password.']);
         }
 
         // Update password
@@ -67,14 +78,21 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         
-        // Log out the user
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        
-        // Delete the user account
-        $user->delete();
-        
-        return redirect()->route('home')->with('success', 'Your account has been successfully deleted.');
+        try {
+            // Delete the user account first
+            $user->delete();
+            
+            // Only logout and invalidate session after successful deletion
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            
+            // Store success message before redirecting
+            return redirect()->route('home')->with('success', 'Your account has been successfully deleted.');
+            
+        } catch (\Exception $e) {
+            // If deletion fails, user remains logged in and can try again
+            return redirect()->route('settings')->with('error', 'Failed to delete account. Please try again or contact support.');
+        }
     }
 }
