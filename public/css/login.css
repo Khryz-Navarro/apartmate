@@ -7,24 +7,25 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--bg-primary);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    color: var(--text-primary);
 }
 
 .login-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-primary);
     padding: 40px;
     width: 100%;
     max-width: 400px;
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-primary);
 }
 
 .login-container::before {
@@ -34,7 +35,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: var(--accent-primary);
 }
 
 .login-header {
@@ -45,12 +46,12 @@ body {
 .login-title {
     font-size: 28px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .login-subtitle {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
@@ -62,7 +63,7 @@ body {
 .form-label {
     display: block;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 500;
     font-size: 14px;
 }
@@ -70,21 +71,22 @@ body {
 .form-input {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e1e5e9;
-    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
     font-size: 16px;
     transition: all 0.3s ease;
-    background: #fff;
+    background: var(--input-bg);
+    color: var(--text-primary);
 }
 
 .form-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 3px var(--shadow-primary);
 }
 
 .form-input::placeholder {
-    color: #999;
+    color: var(--text-quaternary);
 }
 
 .password-toggle {
@@ -95,13 +97,13 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 18px;
     padding: 4px;
 }
 
 .password-toggle:hover {
-    color: #333;
+    color: var(--text-primary);
 }
 
 .remember-forgot {
@@ -121,27 +123,27 @@ body {
 .remember-me input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #667eea;
+    accent-color: var(--accent-primary);
 }
 
 .forgot-password {
-    color: #667eea;
+    color: var(--text-primary);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .forgot-password:hover {
-    color: #764ba2;
+    color: var(--text-tertiary);
     text-decoration: underline;
 }
 
 .login-button {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 10px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -166,8 +168,9 @@ body {
 }
 
 .login-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    background: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    transform: translateY(-1px);
 }
 
 .login-button:active {
@@ -178,7 +181,7 @@ body {
     text-align: center;
     margin: 25px 0;
     position: relative;
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
@@ -189,12 +192,12 @@ body {
     left: 0;
     right: 0;
     height: 1px;
-    background: #e1e5e9;
+    background: var(--border-primary);
     z-index: 1;
 }
 
 .divider span {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     padding: 0 15px;
     position: relative;
     z-index: 2;
@@ -206,34 +209,34 @@ body {
 }
 
 .register-link a {
-    color: #667eea;
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-    color: #764ba2;
+    color: var(--text-tertiary);
     text-decoration: underline;
 }
 
 .error-message {
-    background: #fee;
-    color: #c33;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 20px;
-    border-left: 4px solid #c33;
+    border-left: 4px solid var(--accent-primary);
     font-size: 14px;
 }
 
 .success-message {
-    background: #efe;
-    color: #363;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 20px;
-    border-left: 4px solid #363;
+    border-left: 4px solid var(--accent-primary);
     font-size: 14px;
 }
 
