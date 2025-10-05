@@ -68,7 +68,7 @@
                         <label for="current_password">Current Password</label>
                         <input type="password" id="current_password" name="current_password" required 
                                class="@error('current_password') error @enderror"
-                               value="{{ old('current_password') }}">
+                               autocomplete="current-password">
                         @error('current_password')
                             <div class="field-error">{{ $message }}</div>
                         @enderror
@@ -78,7 +78,7 @@
                         <label for="new_password">New Password</label>
                         <input type="password" id="new_password" name="new_password" required minlength="8"
                                class="@error('new_password') error @enderror"
-                               value="{{ old('new_password') }}">
+                               autocomplete="new-password">
                         <div class="password-requirements">
                             <small>Password must be at least 8 characters and contain:</small>
                             <ul id="password-requirements-list">
@@ -108,7 +108,7 @@
                         <label for="new_password_confirmation">Confirm New Password</label>
                         <input type="password" id="new_password_confirmation" name="new_password_confirmation" required minlength="8"
                                class="@error('new_password_confirmation') error @enderror"
-                               value="{{ old('new_password_confirmation') }}">
+                               autocomplete="new-password">
                         @error('new_password_confirmation')
                             <div class="field-error">{{ $message }}</div>
                         @enderror
