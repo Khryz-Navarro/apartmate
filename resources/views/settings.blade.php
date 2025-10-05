@@ -124,31 +124,12 @@
             <div class="settings-section danger-zone">
                 <h2><i class="fas fa-exclamation-triangle"></i> Danger Zone</h2>
                 
-                @if(Auth::user()->delete_requested_at)
-                    <div class="deletion-status">
-                        <h3><i class="fas fa-clock"></i> Account Deletion Pending</h3>
-                        <p>Your account deletion was requested on <strong>{{ Auth::user()->delete_requested_at->format('F j, Y \a\t g:i A') }}</strong>.</p>
-                        <p>You have until <strong>{{ Auth::user()->delete_requested_at->addDays(7)->format('F j, Y \a\t g:i A') }}</strong> to recover your account.</p>
-                        <p class="recovery-info">
-                            <i class="fas fa-info-circle"></i> 
-                            Check your email for recovery instructions, or use the button below to cancel the deletion.
-                        </p>
-                        
-                        <form method="POST" action="{{ route('settings.cancel-deletion') }}" style="display: inline;">
-                            @csrf
-                            <button type="submit" class="btn btn-success">
-                                <i class="fas fa-undo"></i> Cancel Account Deletion
-                            </button>
-                        </form>
-                    </div>
-                @else
-                    <h3>Delete Account</h3>
-                    <p>Once you delete your account, you will have 7 days to recover it. After that, it will be permanently deleted.</p>
-                    
-                    <button type="button" class="btn btn-danger" onclick="showDeleteConfirmation()">
-                        <i class="fas fa-trash"></i> Request Account Deletion
-                    </button>
-                @endif
+                <h3>Delete Account</h3>
+                <p>Once you delete your account, it will be permanently deleted and cannot be recovered.</p>
+                
+                <button type="button" class="btn btn-danger" onclick="showDeleteConfirmation()">
+                    <i class="fas fa-trash"></i> Delete Account
+                </button>
             </div>
         </div>
     </div>
@@ -156,16 +137,16 @@
     <!-- Delete Confirmation Modal -->
     <div id="deleteModal" class="confirmation-modal">
         <div class="modal-content">
-            <h3><i class="fas fa-exclamation-triangle"></i> Request Account Deletion</h3>
-            <p>Are you absolutely sure you want to request account deletion?</p>
+            <h3><i class="fas fa-exclamation-triangle"></i> Delete Account</h3>
+            <p>Are you absolutely sure you want to delete your account?</p>
+            <p><strong>This action cannot be undone!</strong></p>
             <p><strong>What happens next:</strong></p>
             <ul>
+                <li>Your account will be permanently deleted</li>
+                <li>All your data will be lost</li>
                 <li>You will be logged out immediately</li>
-                <li>Your account will be marked for deletion</li>
-                <li>You have 7 days to recover your account</li>
-                <li>After 7 days, your account will be permanently deleted</li>
+                <li>You will not be able to recover your account</li>
             </ul>
-            <p><strong>Recovery:</strong> Check your email for recovery instructions or contact support.</p>
             
             <div class="modal-buttons">
                 <button type="button" class="btn btn-secondary" onclick="hideDeleteConfirmation()">
@@ -175,7 +156,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash"></i> Yes, Request Account Deletion
+                        <i class="fas fa-trash"></i> Yes, Delete My Account
                     </button>
                 </form>
             </div>

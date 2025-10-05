@@ -179,37 +179,6 @@
     border-bottom-color: #dc3545;
 }
 
-.deletion-status {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.deletion-status h3 {
-    color: #856404;
-    margin-bottom: 15px;
-}
-
-.deletion-status p {
-    color: #856404;
-    margin-bottom: 10px;
-}
-
-.recovery-info {
-    background: #d1ecf1;
-    border: 1px solid #bee5eb;
-    border-radius: 6px;
-    padding: 12px;
-    color: #0c5460;
-    margin: 15px 0;
-}
-
-.recovery-info i {
-    margin-right: 8px;
-    color: #17a2b8;
-}
 
 .back-link {
     display: inline-flex;
