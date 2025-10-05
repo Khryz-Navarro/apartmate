@@ -21,3 +21,7 @@ Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth
 Route::get('/settings', [HomeController::class, 'settings'])->middleware('auth')->name('settings');
 Route::post('/settings/change-password', [HomeController::class, 'changePassword'])->middleware('auth')->name('settings.change-password');
 Route::delete('/settings/delete-account', [HomeController::class, 'deleteAccount'])->middleware('auth')->name('settings.delete-account');
+Route::post('/settings/cancel-deletion', [HomeController::class, 'cancelAccountDeletion'])->middleware('auth')->name('settings.cancel-deletion');
+
+// Account recovery route (public)
+Route::get('/recover-account/{token}', [HomeController::class, 'recoverAccount'])->name('recover-account');

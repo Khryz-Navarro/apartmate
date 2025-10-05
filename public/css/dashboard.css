@@ -14,13 +14,17 @@ body {
 }
 
 .dashboard-container {
+    max-width: 1200px;
     width: 100%;
     min-height: 100vh;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     padding: 40px;
+    margin: 0 auto;
     position: relative;
     overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-container::before {
@@ -172,9 +176,20 @@ body {
 }
 
 /* Responsive Design */
+@media (min-width: 1400px) {
+    .dashboard-container {
+        max-width: 1400px;
+        margin: 20px auto;
+        min-height: calc(100vh - 40px);
+    }
+}
+
 @media (max-width: 768px) {
     .dashboard-container {
         padding: 30px 20px;
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
     }
     
     .dashboard-header {

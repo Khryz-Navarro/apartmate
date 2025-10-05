@@ -4,6 +4,11 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 40px);
 }
 
 .settings-section {
@@ -51,6 +56,74 @@
 .form-group input:focus {
     outline: none;
     border-color: #667eea;
+}
+
+.form-group input.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+.form-group input.error:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.field-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
+.password-requirements small {
+    color: #666;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.password-requirements ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #555;
+}
+
+.password-requirements li {
+    font-size: 13px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.password-requirements li i {
+    margin-right: 8px;
+    width: 12px;
+    text-align: center;
+}
+
+.requirement-item.requirement-met {
+    color: #28a745;
+}
+
+.requirement-item.requirement-met i {
+    color: #28a745;
+}
+
+.requirement-item.requirement-not-met {
+    color: #dc3545;
+}
+
+.requirement-item.requirement-not-met i {
+    color: #dc3545;
 }
 
 .btn {
@@ -104,6 +177,38 @@
 .danger-zone h2 {
     color: #dc3545;
     border-bottom-color: #dc3545;
+}
+
+.deletion-status {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.deletion-status h3 {
+    color: #856404;
+    margin-bottom: 15px;
+}
+
+.deletion-status p {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.recovery-info {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    border-radius: 6px;
+    padding: 12px;
+    color: #0c5460;
+    margin: 15px 0;
+}
+
+.recovery-info i {
+    margin-right: 8px;
+    color: #17a2b8;
 }
 
 .back-link {
@@ -184,4 +289,39 @@
     color: #333;
     margin-bottom: 30px;
     font-size: 32px;
+}
+
+/* Responsive Design */
+@media (min-width: 1400px) {
+    .settings-container {
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .settings-container {
+        margin: 0;
+        padding: 30px 20px;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+    
+    .page-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-container {
+        padding: 20px 15px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .settings-section {
+        padding: 20px;
+    }
 }

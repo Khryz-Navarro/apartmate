@@ -47,7 +47,18 @@ class HomeController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|min:6|confirmed',
+            'new_password' => [
+                'required',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/',
+            ],
+        ], [
+            'current_password.required' => 'Please enter your current password.',
+            'new_password.required' => 'Please enter a new password.',
+            'new_password.min' => 'The new password must be at least 8 characters long.',
+            'new_password.confirmed' => 'The new password confirmation does not match.',
+            'new_password.regex' => 'The new password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&).',
         ]);
 
         $user = Auth::user();
@@ -78,20 +89,72 @@ class HomeController extends Controller
         $user = Auth::user();
         
         try {
-            // Delete the user account first
-            $user->delete();
+            // Check if user already has a pending deletion request
+            if ($user->delete_requested_at) {
+                return redirect()->route('settings')->with('error', 'Account deletion is already pending. Check your email for recovery instructions.');
+            }
+
+            // Request account deletion with grace period
+            $token = $user->requestDeletion();
             
-            // Only logout and invalidate session after successful deletion
+            // TODO: Send email notification with recovery link
+            // Mail::to($user->email)->send(new AccountDeletionNotification($user, $token));
+            
+            // Logout user immediately for security
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
             
             // Store success message before redirecting
-            return redirect()->route('home')->with('success', 'Your account has been successfully deleted.');
+            return redirect()->route('home')->with('success', 'Your account deletion has been requested. You have 7 days to recover your account. Check your email for recovery instructions.');
             
         } catch (\Exception $e) {
             // If deletion fails, user remains logged in and can try again
-            return redirect()->route('settings')->with('error', 'Failed to delete account. Please try again or contact support.');
+            return redirect()->route('settings')->with('error', 'Failed to request account deletion. Please try again or contact support.');
+        }
+    }
+
+    /**
+     * Cancel account deletion request
+     */
+    public function cancelAccountDeletion(Request $request)
+    {
+        $user = Auth::user();
+        
+        if (!$user->delete_requested_at) {
+            return redirect()->route('settings')->with('error', 'No pending account deletion found.');
+        }
+
+        try {
+            $user->cancelDeletion();
+            return redirect()->route('settings')->with('success', 'Account deletion has been cancelled. Your account is safe.');
+        } catch (\Exception $e) {
+            return redirect()->route('settings')->with('error', 'Failed to cancel account deletion. Please try again or contact support.');
+        }
+    }
+
+    /**
+     * Recover account using token
+     */
+    public function recoverAccount(Request $request, string $token)
+    {
+        $user = User::where('delete_token', $token)
+                   ->whereNotNull('delete_requested_at')
+                   ->first();
+
+        if (!$user) {
+            return redirect()->route('home')->with('error', 'Invalid or expired recovery token.');
+        }
+
+        if (!$user->isWithinGracePeriod()) {
+            return redirect()->route('home')->with('error', 'Recovery period has expired. Your account has been permanently deleted.');
+        }
+
+        try {
+            $user->cancelDeletion();
+            return redirect()->route('login')->with('success', 'Your account has been recovered successfully. You can now log in again.');
+        } catch (\Exception $e) {
+            return redirect()->route('home')->with('error', 'Failed to recover account. Please contact support.');
         }
     }
 }
