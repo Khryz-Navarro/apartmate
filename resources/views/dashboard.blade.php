@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome/all.min.css') }}">
 </head>
 <body>
     <div class="dashboard-container">
@@ -39,31 +39,31 @@
         <div class="dashboard-stats">
             <div class="stat-card">
                 <div class="stat-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="stat-number">1</div>
-                <div class="stat-label">Active User</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
                     <i class="fas fa-home"></i>
                 </div>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Properties</div>
+                <div class="stat-number">{{ $userPropertiesCount }}</div>
+                <div class="stat-label">My Properties</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">
                     <i class="fas fa-calendar"></i>
                 </div>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Bookings</div>
+                <div class="stat-number">{{ $userBookingsCount }}</div>
+                <div class="stat-label">My Bookings</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">
                     <i class="fas fa-star"></i>
                 </div>
-                <div class="stat-number">0</div>
-                <div class="stat-label">Reviews</div>
+                <div class="stat-number">{{ $userReviewsCount }}</div>
+                <div class="stat-label">My Reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-number">1</div>
+                <div class="stat-label">Account Status</div>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
                 <i class="fas fa-search action-icon"></i>
                 Browse Properties
             </a>
-            <a href="#" class="action-button">
+            <a href="{{ route('settings') }}" class="action-button">
                 <i class="fas fa-cog action-icon"></i>
                 Settings
             </a>

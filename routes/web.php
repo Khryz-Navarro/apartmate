@@ -15,6 +15,9 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 
 // Dashboard route (protected)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
+// Settings routes (protected)
+Route::get('/settings', [HomeController::class, 'settings'])->middleware('auth')->name('settings');
+Route::post('/settings/change-password', [HomeController::class, 'changePassword'])->middleware('auth')->name('settings.change-password');
+Route::delete('/settings/delete-account', [HomeController::class, 'deleteAccount'])->middleware('auth')->name('settings.delete-account');
