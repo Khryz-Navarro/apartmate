@@ -8,6 +8,7 @@
     <title>Login - {{ config('app.name', 'ApartMate') }}</title>
     
     <!-- External CSS -->
+    <link rel="stylesheet" href="{{ asset('css/dark-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     
     <!-- Font Awesome for icons -->
@@ -102,5 +103,8 @@
             @endif
         </div>
     </div>
+    
+    <!-- Dark Mode JavaScript -->
+    <script src="{{ asset('js/dark-mode.js') }}"></script>
 </body>
 </html>

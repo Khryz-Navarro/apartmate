@@ -9,6 +9,7 @@
     <meta name="description" content="Discover and book the perfect apartment for your next stay. ApartMate connects you with amazing properties worldwide.">
     
     <!-- External CSS -->
+    <link rel="stylesheet" href="{{ asset('css/dark-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
     
     <!-- Font Awesome for icons -->
@@ -248,5 +249,8 @@
             observer.observe(card);
         });
     </script>
+    
+    <!-- Dark Mode JavaScript -->
+    <script src="{{ asset('js/dark-mode.js') }}"></script>
 </body>
 </html>

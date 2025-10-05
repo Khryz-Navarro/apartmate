@@ -8,6 +8,7 @@
     <title>Dashboard - {{ config('app.name', 'ApartMate') }}</title>
     
     <!-- External CSS -->
+    <link rel="stylesheet" href="{{ asset('css/dark-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     
     <!-- Font Awesome for icons -->
@@ -63,7 +64,7 @@
                     <i class="fas fa-user-check"></i>
                 </div>
                 <div class="stat-number">1</div>
-                <div class="stat-label">Account Status</div>
+                <div class="stat-label">Registered Account</div>
             </div>
         </div>
 
@@ -86,5 +87,8 @@
             </a>
         </div>
     </div>
+    
+    <!-- Dark Mode JavaScript -->
+    <script src="{{ asset('js/dark-mode.js') }}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
     <title>Settings - {{ config('app.name', 'ApartMate') }}</title>
     
     <!-- External CSS -->
+    <link rel="stylesheet" href="{{ asset('css/dark-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/settings.css') }}">
     
@@ -241,5 +242,8 @@
             }
         }
     </script>
+    
+    <!-- Dark Mode JavaScript -->
+    <script src="{{ asset('js/dark-mode.js') }}"></script>
 </body>
 </html>

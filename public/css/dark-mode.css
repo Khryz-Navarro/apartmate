@@ -1,0 +1,98 @@
+/* Dark Mode CSS Variables and Styles */
+
+:root {
+    /* Light Mode Colors (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f8f8;
+    --bg-tertiary: #f0f0f0;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-tertiary: #666666;
+    --text-quaternary: #999999;
+    --border-primary: #e0e0e0;
+    --border-secondary: #cccccc;
+    --shadow-primary: rgba(0, 0, 0, 0.1);
+    --shadow-secondary: rgba(0, 0, 0, 0.15);
+    --accent-primary: #000000;
+    --accent-hover: #333333;
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover-bg: #ffffff;
+    --button-hover-text: #000000;
+    --input-bg: #ffffff;
+    --input-border: #e0e0e0;
+    --input-focus-border: #000000;
+    --card-bg: #ffffff;
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #404040;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-tertiary: #b3b3b3;
+    --text-quaternary: #808080;
+    --border-primary: #404040;
+    --border-secondary: #555555;
+    --shadow-primary: rgba(0, 0, 0, 0.3);
+    --shadow-secondary: rgba(0, 0, 0, 0.5);
+    --accent-primary: #ffffff;
+    --accent-hover: #e0e0e0;
+    --button-bg: #ffffff;
+    --button-text: #000000;
+    --button-hover-bg: #000000;
+    --button-hover-text: #ffffff;
+    --input-bg: #2d2d2d;
+    --input-border: #404040;
+    --input-focus-border: #ffffff;
+    --card-bg: #2d2d2d;
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--border-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-primary);
+}
+
+.dark-mode-toggle:hover {
+    background: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-secondary);
+}
+
+.dark-mode-toggle i {
+    font-size: 18px;
+}
+
+/* Smooth transitions for theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Override specific elements that shouldn't transition */
+.dark-mode-toggle,
+.dark-mode-toggle *,
+input,
+textarea,
+select {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

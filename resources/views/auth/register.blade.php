@@ -8,6 +8,7 @@
     <title>Register - {{ config('app.name', 'ApartMate') }}</title>
     
     <!-- External CSS -->
+    <link rel="stylesheet" href="{{ asset('css/dark-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     
     <!-- Font Awesome for icons -->
@@ -112,6 +113,8 @@
             <a href="{{ route('login') }}">Sign in here</a>
         </div>
     </div>
-
+    
+    <!-- Dark Mode JavaScript -->
+    <script src="{{ asset('js/dark-mode.js') }}"></script>
 </body>
 </html>

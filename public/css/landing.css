@@ -8,8 +8,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-primary);
     overflow-x: hidden;
+    background: var(--bg-primary);
 }
 
 /* Header Styles */
@@ -18,16 +19,16 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-primary);
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
 
 .header.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: var(--bg-primary);
+    box-shadow: 0 2px 8px var(--shadow-primary);
 }
 
 .nav-container {
@@ -42,10 +43,7 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
@@ -58,14 +56,14 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
 }
 
 .nav-link:hover {
-    color: #667eea;
+    color: var(--text-tertiary);
 }
 
 .nav-link::after {
@@ -75,7 +73,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--accent-primary);
     transition: width 0.3s ease;
 }
 
@@ -91,11 +89,11 @@ body {
 
 .btn {
     padding: 0.75rem 1.5rem;
-    border-radius: 50px;
+    border-radius: 4px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    border: none;
+    border: 1px solid var(--accent-primary);
     cursor: pointer;
     display: inline-block;
     text-align: center;
@@ -103,35 +101,37 @@ body {
 
 .btn-outline {
     background: transparent;
-    color: #667eea;
-    border: 2px solid #667eea;
+    color: var(--text-primary);
+    border: 1px solid var(--accent-primary);
 }
 
 .btn-outline:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-2px);
+    background: var(--button-bg);
+    color: var(--button-text);
+    transform: translateY(-1px);
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: 2px solid transparent;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--accent-primary);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    background: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    transform: translateY(-1px);
 }
 
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--bg-primary);
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--border-primary);
 }
 
 .hero::before {
@@ -141,7 +141,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+    background: var(--bg-secondary);
     opacity: 0.3;
 }
 
@@ -160,14 +160,14 @@ body {
 .hero-content h1 {
     font-size: 3.5rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-tertiary);
     margin-bottom: 2rem;
     line-height: 1.6;
 }
@@ -186,14 +186,15 @@ body {
 .hero-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-primary);
+    border: 1px solid var(--border-primary);
 }
 
 /* Features Section */
 .features {
     padding: 6rem 0;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
 }
 
 .container {
@@ -210,13 +211,13 @@ body {
 .section-title h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .section-title p {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-tertiary);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -228,14 +229,15 @@ body {
 }
 
 .feature-card {
-    background: white;
+    background: var(--card-bg);
     padding: 2.5rem;
-    border-radius: 20px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--shadow-primary);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-primary);
 }
 
 .feature-card::before {
@@ -245,7 +247,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--accent-primary);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -255,42 +257,43 @@ body {
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-secondary);
 }
 
 .feature-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--accent-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
-    color: white;
+    color: var(--button-text);
     font-size: 2rem;
 }
 
 .feature-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .feature-card p {
-    color: #666;
+    color: var(--text-tertiary);
     line-height: 1.6;
 }
 
 /* CTA Section */
 .cta {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--bg-secondary);
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid var(--border-primary);
 }
 
 .cta::before {
@@ -300,7 +303,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+    background: var(--bg-primary);
     opacity: 0.3;
 }
 
@@ -312,13 +315,13 @@ body {
 .cta h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .cta p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-tertiary);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -327,8 +330,8 @@ body {
 
 /* Footer */
 .footer {
-    background: #1a1a1a;
-    color: white;
+    background: var(--bg-primary);
+    color: var(--text-primary);
     padding: 3rem 0 1rem;
 }
 
@@ -343,26 +346,26 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #667eea;
+    color: var(--text-primary);
 }
 
 .footer-section p,
 .footer-section a {
-    color: #ccc;
+    color: var(--text-secondary);
     text-decoration: none;
     line-height: 1.6;
     transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-    color: #667eea;
+    color: var(--text-primary);
 }
 
 .footer-bottom {
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--border-primary);
     padding-top: 1rem;
     text-align: center;
-    color: #999;
+    color: var(--text-quaternary);
 }
 
 /* Mobile Menu */
