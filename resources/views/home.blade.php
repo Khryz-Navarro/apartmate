@@ -33,7 +33,7 @@
             
             <div class="auth-buttons">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Admin Dashboard</a>
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-outline">Logout</button>
@@ -58,7 +58,7 @@
                 <p>Discover amazing apartments and properties worldwide. Book your next stay with confidence through our trusted platform.</p>
                 <div class="hero-buttons">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+                        <a href="#properties" class="btn btn-primary">Explore Properties</a>
                     @else
                         <a href="{{ route('register') }}" class="btn btn-primary">Get Started</a>
                         <a href="{{ route('login') }}" class="btn btn-outline">Sign In</a>
@@ -138,7 +138,7 @@
                 <h2>Ready to Find Your Perfect Home?</h2>
                 <p>Join thousands of satisfied users who have found their ideal properties through ApartMate. Start your journey today!</p>
                 @auth
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Explore Properties</a>
+                    <a href="#properties" class="btn btn-primary">Explore Properties</a>
                 @else
                     <a href="{{ route('register') }}" class="btn btn-primary">Create Account</a>
                 @endauth

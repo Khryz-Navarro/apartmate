@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -14,10 +15,17 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-// Dashboard route (protected)
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-
-// Settings routes (protected)
-Route::get('/settings', [HomeController::class, 'settings'])->middleware('auth')->name('settings');
-Route::post('/settings/change-password', [HomeController::class, 'changePassword'])->middleware('auth')->name('settings.change-password');
-Route::delete('/settings/delete-account', [HomeController::class, 'deleteAccount'])->middleware('auth')->name('settings.delete-account');
+// Admin Routes
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/properties', [AdminController::class, 'properties'])->name('properties');
+    Route::get('/bookings', [AdminController::class, 'bookings'])->name('bookings');
+    Route::get('/payments', [AdminController::class, 'payments'])->name('payments');
+    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
+    
+    // API Routes for dashboard data
+    Route::get('/stats', [AdminController::class, 'getStats'])->name('stats');
+    Route::get('/recent-activity', [AdminController::class, 'getRecentActivity'])->name('recent-activity');
+});
